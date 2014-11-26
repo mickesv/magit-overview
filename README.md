@@ -5,6 +5,7 @@ Emacs magit: status overview over all reachable git repositories
 
 Start it with "M-x magit-overview"
 
+2014-11-26: I have tested it on MacOS X. The open commands may not work e.g. on Windows, since I am "cheating" a bit when finding out the path to the selected repository.
 ---
 Very brief documentation:
 
