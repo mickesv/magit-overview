@@ -83,9 +83,11 @@ Special commands:
   (let ((buffer (get-buffer-create "*magit overview*")))
     (set-buffer buffer)
     (magit-overview-mode)
+    (toggle-truncate-lines 1)
     (magit-overview-redisplay)
     ;;(display-buffer buffer)
     (switch-to-buffer-other-window buffer)
+    (message "")
   nil))
  
 ;; Helper functions for the keypress-functions
