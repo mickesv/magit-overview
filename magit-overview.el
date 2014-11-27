@@ -20,11 +20,17 @@
 ;; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ;; SOFTWARE.
 
+;; Usage:
+;;  put this file in your emacs path
+;;  (require 'magit-overview)
+;;  M-x magit-overview
+
+(require 'magit)
+(require 'dired)
+(require 's)
 
 ;; Buffer generation
 ;; --------------------
-(require 'magit)
-
 (defconst magit-overview-display-status-width 6)
 (defconst magit-overview-display-repository-width 40)
 (defconst magit-overview-display-dir-width 30)
@@ -70,9 +76,11 @@
 )
 
 (defun magit-overview ()
-  "Create an overview of all git repositories reachable by magit through magit-repo-dirs"
+  "Create an overview of all git repositories reachable by magit through magit-repo-dirs.
+Special commands:
+\\{magit-overview-mode-map}"
   (interactive)
-  (let ((buffer (get-buffer-create "*Git Overview*")))
+  (let ((buffer (get-buffer-create "*magit overview*")))
     (set-buffer buffer)
     (magit-overview-mode)
     (magit-overview-redisplay)
@@ -95,7 +103,7 @@
 	  (if (search-forward " /" (line-end-position) t)
 	      (let* ((start-of-dir (- (point) 1))
 		     (dir (buffer-substring-no-properties start-of-dir (line-end-position))))
-	  	dir)
+	  	(s-trim dir))
 	    nil)
 	)))))
 
@@ -171,7 +179,7 @@ With a prefix argument, kill the buffer instead."
 
 
 (defun magit-overview-mode ()
-  "Major mode for magit-overview-mode.
+  "Major mode for magit-overview.
 Special commands:
 \\{magit-overview-mode-map}"
   (interactive)
