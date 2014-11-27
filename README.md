@@ -3,7 +3,10 @@ magit-overview
 
 Emacs magit: status overview over all reachable git repositories
 
-Start it with "M-x magit-overview".
+Usage:
+- put this file in your emacs path
+- (require 'magit-overview)
+- Start it with "M-x magit-overview".
 
 I have tested it on MacOS X (2014-11-26). The open commands may not work e.g. on Windows, since I am "cheating" a bit when finding out the path to the selected repository.
 
